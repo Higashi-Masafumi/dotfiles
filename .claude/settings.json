@@ -3,7 +3,10 @@
     "permissions": {
         "defaultMode": "auto",
         "allow": [
-            
+            "Bash(gh:*)"
+        ],
+        "deny": [
+            "Read(.env)"
         ]
     }
 }
