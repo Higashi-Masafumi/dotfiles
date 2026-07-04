@@ -1,0 +1,9 @@
+{
+    "model": "claude-fable-5",
+    "permissions": {
+        "defaultMode": "auto",
+        "allow": [
+            
+        ]
+    }
+}
