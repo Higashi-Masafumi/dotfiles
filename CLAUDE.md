@@ -25,3 +25,24 @@
 - Use Caseはビジネスロジックを含まない。ドメイン層に委譲する
 - ドメインエラーは具体的なサブクラスとして定義する。汎用的な`ValueError`や`Exception`を使わない
 - FastAPIの`Depends`でDIを行い、具象をabstractインターフェースに接続する
+
+## Pythonエージェントチーム (Agent Teams)
+
+このプロジェクトはAgent Teams(`CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`)を有効にしている。Python実装を伴うタスクでは、以下の3つのsubagent定義をteammateとして使い分ける。
+
+- **ddd-onion-architect**: 新機能の実装・既存コードのDDD/Onion Architectureへのリファクタリングを担当
+- **python-reviewer**: 実装後のコードスタイル・DDD原則遵守をレビューし、その場で修正
+- **test-coverage-checker**: テストの網羅性(APIバージョン差分、境界値・異常系の入力)をレビューし、不足するテストを追加
+
+### チームの立ち上げ方
+リードのセッションで自然文で依頼する。例:
+
+```
+ddd-onion-architect agent typeでteammateを立ち上げて〇〇機能を実装させて。
+実装が固まったら、python-reviewer agent typeのteammateにレビュー・修正させ、
+test-coverage-checker agent typeのteammateにテストの網羅性を確認・追加させて。
+```
+
+### 依存関係の目安
+- 実装(ddd-onion-architect)が完了してから、レビュー(python-reviewer)とテスト網羅性チェック(test-coverage-checker)に着手させる。実装が固まる前に走らせると手戻りが大きい
+- python-reviewerとtest-coverage-checkerは実装完了後であれば並列実行可能
