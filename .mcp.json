@@ -4,6 +4,10 @@
             "type": "http",
             "url": "https://api.alphaxiv.org/mcp/v1",
             "headers": {}
+        },
+        "notion": {
+            "type": "http",
+            "url": "https://mcp.notion.com/mcp"
         }
     }
 }
