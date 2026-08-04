@@ -19,10 +19,13 @@ Claude Code / Codex の設定と Agent Skills を管理するリポジトリ。
 | スキル | 内容 |
 |--------|------|
 | [release-qa](skills/release-qa/) | GitHub PR のURLリストからリリースQAチェックリストを生成する |
+| [python-review](skills/python-review/) | Pythonバックエンドをコードスタイル・DDD/Onion Architectureの観点でレビューして修正する |
 
 ```bash
-gh skill install Higashi-Masafumi/dotfiles release-qa --agent claude-code --scope user
-gh skill install Higashi-Masafumi/dotfiles release-qa --agent codex --scope user
+for skill in release-qa python-review; do
+  gh skill install Higashi-Masafumi/dotfiles "$skill" --agent claude-code --scope user
+  gh skill install Higashi-Masafumi/dotfiles "$skill" --agent codex --scope user
+done
 ```
 
 - `gh skill` は GitHub CLI 2.95.0 以降の preview 機能
@@ -38,5 +41,5 @@ gh skill install Higashi-Masafumi/dotfiles release-qa --agent codex --scope user
 
 gh skill publish --dry-run    # 2. Agent Skills 仕様に沿っているか検証する
 git commit && git push        # 3. push する
-gh skill update release-qa    # 4. インストール済み環境へ反映する
+gh skill update <skill-name>  # 4. インストール済み環境へ反映する
 ```
