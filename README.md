@@ -18,7 +18,7 @@ Claude Code / Codex の設定と Agent Skills を管理するリポジトリ。
 
 | スキル | 内容 |
 |--------|------|
-| [release-qa](skills/release-qa/) | GitHub PR のURLリストからリリースQAチェックリストを生成する |
+| [release-qa](skills/release-qa/) | 開発者の気になるポイントと GitHub PR のdiffからリリースQAチェックリストを生成する |
 | [python-review](skills/python-review/) | Pythonバックエンドをコードスタイル・DDD/Onion Architectureの観点でレビューして修正する |
 
 ```bash
